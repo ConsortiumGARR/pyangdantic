@@ -1,0 +1,24 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+*.log
+
+# Virtual environments
+.venv
+.ruff_cache
+
+# env files
+*.env
+
+# Temporary files
+digest.txt
+temp/**/*
+# except the directory structure itself
+!temp/**/
+# specifically un-ignore the .gitkeep files
+!temp/.gitkeep
+!temp/**/.gitkeep

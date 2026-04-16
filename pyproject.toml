@@ -1,0 +1,18 @@
+[project]
+name = "pyangdantic"
+version = "0.1.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dotenv>=0.9.9",
+    "ncclient>=0.7.0",
+    "pyang>=2.7.1",
+    "pydantic>=2.12.5",
+    "requests>=2.32.5",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.0",
+]
