@@ -305,11 +305,11 @@ class RestconfClient:
             url = base_url + path
             try:
                 msg = f"Request: {method} {url} {kwargs}"
-                log.debug(msg)
+                log.info(msg)
                 response = self._session.request(method, url, timeout=(10, 2400), **kwargs)
 
                 msg = f"Response ({response.status_code}): {response.text}"
-                log.debug(msg)
+                log.info(msg)
                 response.raise_for_status()
                 return response.json() if response.text.strip() else {}
 

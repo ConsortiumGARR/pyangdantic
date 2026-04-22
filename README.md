@@ -49,7 +49,7 @@ cd pyangdantic
 uv sync --locked
 ```
 
-save a file named `.env` in project root with the following variables:
+save a file named `.env` in project's root with the following variables:
 ```.env
 DEVICE_NAME = 'device_name'
 DEVICE_IP = 'ip'
@@ -104,13 +104,13 @@ uv run utils/try_client.py
 
 The primary alternative is [pydantify](https://github.com/pydantify/pydantify). While both tools aim to bridge the gap between YANG and Pydantic, they are different.
 
-### Pydantify: The Architectural Approach
+### Pydantify
 Pydantify is a sophisticated, multi-stage pipeline:
 `YANG Abstract Syntax Tree (AST)` -> `Internal Object-Oriented AST` -> `Dynamic In-Memory Pydantic Models` -> `JSON Schema` -> `datamodel-code-generator` -> `Pydantic Models`.
 
 **Pros:** modular, well-architected codebase, intermediate formats (JSON Schema).
 
-### Pyangdantic: The Pragmatic Approach
+### Pyangdantic
 This project instead ignores the "clean code" manual in favor of direct results. It walks the raw `pyang` AST and uses direct string concatenation to generate code. By skipping intermediate JSON Schemas, it avoids the quirks and limitations of third-party code generators and possible metadata loss.
 
 **Pros:** This is an opinionated SDK generator. It builds the Pydantic v2 models and the boilerplate for URI navigation, CRUD operations, and configuration templating. If you want to change the generated code, you have to change the code that generates it.
