@@ -7,7 +7,7 @@ Then you can do stuff like this to update the description of a port:
 ```python
 from device_name import RestconfClient as DeviceNameClient
 
-client = DeviceClient(
+client = DeviceNameClient(
     management_ip="192.168.123.42",
     port=443,
     username="user",
