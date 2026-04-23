@@ -194,7 +194,10 @@ for loader, module_name, is_pkg in pkgutil.iter_modules(__path__):
         importlib.import_module(f".{module_name}", package=__name__)
 
 # Clean up namespace so only the modules/registry remain if desired
-del pkgutil, importlib, Path, loader, module_name, is_pkg
+del pkgutil, importlib, Path
+for _var in ('loader', 'module_name', 'is_pkg'):
+    if _var in dir():
+        del _var
 
 """
         with open(os.path.join(directory, "__init__.py"), "w") as f:
@@ -723,11 +726,13 @@ class ListNode(Generic[TNode]):
 
     def _create(self, data_list: list[dict[str, Any]]) -> None:
         envelope = {self._name: data_list}
-        self._client._request("POST", self._path, json=envelope)
+        url = self._path.removesuffix(f"/{self._name}")
+        self._client._request("POST", url, json=envelope)
 
     def _replace(self, data_list: list[dict[str, Any]]) -> None:
         envelope = {self._name: data_list}
-        return self._client._request("PUT", self._path, json=envelope)
+        url = self._path.removesuffix(f"/{self._name}")
+        return self._client._request("PUT", url, json=envelope)
 
     def delete(self) -> None:
         return self._client._request("DELETE", self._path)
