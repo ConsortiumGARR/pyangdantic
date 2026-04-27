@@ -2,3 +2,4 @@ LICENSE
 uv.lock
 .gitingestignore
 .gitignore
+**/.gitkeep
